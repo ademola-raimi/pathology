@@ -1,0 +1,105 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow|Oswald:400,300);
+@import url(https://fonts.googleapis.com/css?family=Kaushan+Script);
+
+
+.background-image {
+    text-align: center;
+    color: #fff;
+    background: url(../images/banner.jpg) no-repeat;
+    background-attachment: scroll;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 101.7%;
+    height: 100%;
+    margin-left: -1.162%;
+}
+
+.background-image .overlay {
+    background: rgba(0, 0, 0, 0.7);
+    width: 101.8%;
+    height: 100%;
+    margin-left: -1.162%;
+}
+
+.intro-text {
+    position: relative;
+    padding: 20% 0 15% 0;
+    margin-bottom: 10%;
+}
+
+.background-image .intro-text h1 {    
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 50px;
+    letter-spacing: 5px;
+    margin-bottom: 55px;
+    -webkit-animation: bounceIn;
+    -moz-animation: rubberBand;
+    -o-animation: bounceIn;
+    animation: bounceIn;
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -o-animation-duration: 2s;
+    animation-duration: 2s;
+    font-family: 'Oswald', sans-serif;
+}
+
+.background-image .intro-text h1 span {
+    color: #ff432e;
+}
+
+.background-image .intro-text p {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 35px;
+    letter-spacing: 3px;
+    margin-bottom: 55px;
+    -webkit-animation: bounceInLeft;
+    -moz-animation: fadeInLeft;
+    -o-animation: fadeInLeft;
+    animation: bounceLeft;
+    -webkit-animation-duration: 2s;
+    -moz-animation-duration: 2s;
+    -o-animation-duration: 2s;
+    animation-duration: 2s;
+}
+
+.background-image .intro-text .btn-primary {
+    padding: 15px 25px;
+    font-size: 16px;
+    border-color: #fff;
+    color: #fff;
+    border-radius: 0;
+    width: 130px;
+}
+
+.background-image .btn-primary:hover {
+	background: #fff;
+	border-color: #fff;
+    color: #111;
+}
+
+.mobile-btn {
+    display: block;
+    width: 100% !important;
+}
+
+@media (min-width: 991px) {
+    .mobile-btn {
+        display: inline;
+    }
+}
+
+.search {
+	margin-bottom: 15%;
+	margin-top: -20%;
+	position: relative;
+}
+
+.navbar-right {
+	margin-left: 86%;
+}
