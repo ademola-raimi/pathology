@@ -24,5 +24,6 @@
         @include('sweet::alert')
         <script src="{{ asset('js/script.js') }}"></script>
         <script src="{{ asset('js/autocomplete.js') }}"></script>
+        <script src="{{ asset('js/staff.js') }}"></script>
     </body>
 </html>
