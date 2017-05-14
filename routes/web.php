@@ -27,7 +27,7 @@ Route::post('signup', [
 ]);
 
 Route::get('login', [
-	'uses' => 'Auth\AuthCOntroller@getLoginForm',
+	'uses' => 'Auth\AuthController@getLoginForm',
 	'as' => 'getLogin',
 ]);
 
