@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class StaffManagementController extends Controller
 {
-	/**
+    /**
      * All staffs
      *
      * @return \Illuminate\Http\Response

@@ -54,8 +54,8 @@ class StaffManagementTest extends TestCase
      */
     public function testStaffRoleWasNotSuccesfullyUpdatedDueToInvalidDetails()
     {
-    	$user  = $this->createOperatorUser();
-    	$staff = $this->createStaff();
+        $user  = $this->createOperatorUser();
+        $staff = $this->createStaff();
 
         $this->actingAs($user)->visit('staff/'.$staff->id.'/edit')
             ->type('', 'role')
