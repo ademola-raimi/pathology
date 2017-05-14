@@ -43,4 +43,3 @@ $factory->define(App\Patient::class, function (Faker\Generator $faker) {
         'case_number'   => str_random(10),
     ];
 });
-
