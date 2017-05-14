@@ -23,6 +23,11 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
         return $app;
     }
 
+    /**
+     * create an Admin User
+     *
+     * @return \Runner\Filter\Factory
+     */
     protected function createOperatorUser()
     {
         return factory('App\User')->create([
@@ -35,6 +40,11 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
         ]);
     }
 
+    /**
+     * create a Patient
+     *
+     * @return \Runner\Filter\Factory
+     */
     protected function createPatient()
     {
         return factory('App\Patient')->create([
@@ -47,6 +57,11 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
         ]);
     }
 
+    /**
+     * create a report
+     *
+     * @return \Runner\Filter\Factory
+     */
     protected function createReport()
     {
         $patient = $this->createPatient();
@@ -58,6 +73,11 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
         ]);
     }
 
+    /**
+     * create a staff user- ordinary user
+     *
+     * @return \Runner\Filter\Factory
+     */
     protected function createStaff()
     {
         return factory('App\User')->create([

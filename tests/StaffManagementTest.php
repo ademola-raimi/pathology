@@ -8,6 +8,9 @@ class StaffManagementTest extends TestCase
 {
     use DatabaseTransactions;
 
+    /**
+     * test get all staff page
+     */
     public function testViewAllStaffs()
     {
     	$user = $this->createOperatorUser();
@@ -16,6 +19,9 @@ class StaffManagementTest extends TestCase
             ->see('Manage Staffs');
     }
 
+    /**
+     * test get staff edit page
+     */
     public function testViewEditStaff()
     {
     	$user  = $this->createOperatorUser();
@@ -26,6 +32,9 @@ class StaffManagementTest extends TestCase
             ->see($staff->first_name . ' ' . $staff->last_name);
     }
 
+    /**
+     * test staff user was updated
+     */
     public function testStaffRoleWasSuccesfullyUpdatedToOperator()
     {
     	$user  = $this->createOperatorUser();
@@ -40,6 +49,28 @@ class StaffManagementTest extends TestCase
             ->see('Manage Staffs');
     }
 
+    /**
+     * test staff user was not updated due to invalid details
+     */
+    public function testStaffRoleWasNotSuccesfullyUpdatedDueToInvalidDetails()
+    {
+    	$user  = $this->createOperatorUser();
+    	$staff = $this->createStaff();
+
+        $this->actingAs($user)->visit('staff/'.$staff->id.'/edit')
+            ->type('', 'role')
+            ->type('', 'email')
+            ->type('', 'name')
+            ->press('Update Staff')
+            ->seePageIs('staff/'.$staff->id.'/edit')
+            ->see('The role field is required.')
+            ->see('The name field is required.')
+            ->see('The email field is required.');
+    }
+
+    /**
+     * test staff was deleted
+     */
     public function testStaffDeletedSuccesfully()
     {
     	$user  = $this->createOperatorUser();
