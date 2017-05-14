@@ -103,6 +103,26 @@ Route::group(['middleware' => 'operator.user'], function () {
 		'as'   => 'updatePatient'
 	]);
 
+	Route::get('staffs', [
+		'uses' => 'StaffManagementController@viewStaffs',
+		'as' => 'getAllStaffs',
+	]);
+
+	Route::get('staff/{id}/edit', [
+		'uses' => 'StaffManagementController@editStaffForm',
+		'as' => 'editStaff',
+	]);
+
+	Route::post('staff/{id}/update', [
+		'uses' => 'StaffManagementController@updateStaff',
+		'as' => 'updateStaff',
+	]);
+
+	Route::get('staff/{id}/delete', [
+		'uses' => 'StaffManagementController@deleteStaff',
+		'as'   => 'deleteReport'
+	]);
+
 	Route::get('patient/{id}/delete', [
 		'uses' => 'OperatorUserController@deletePatient',
 		'as'   => 'deletePatient'
