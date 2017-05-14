@@ -6,41 +6,6 @@ class OperatorTest extends TestCase
 {
     use DatabaseTransactions;
 
-    protected function createOperatorUser()
-    {
-    	return factory('App\User')->create([
-            'email'      => 'demola@gmail.com',
-            'password'   => bcrypt('london'),
-            'first_name' => 'Demola',
-            'last_name'  => 'Raimi',
-            'role_id'    => 3,
-            'avatar'     => 'https://en.gravatar.com/userimage/102347280/b3e9c138c1548147b7ff3f9a2a1d9bb0.png?size=200',
-        ]);
-    }
-
-    protected function createPatient()
-    {
-    	return factory('App\Patient')->create([
-            'email'      => 'demola@gmail.com',
-            'name'   => 'Raimi Ademola',
-            'phone_number' => '08032186996',
-            'date_of_birth'  => '12/24/2016',
-            'patient_id'    => 38726836,
-        	'case_number'   => 84743883,
-        ]);
-    }
-
-    protected function createReport()
-    {
-    	$patient = $this->createPatient();
-
-    	return factory('App\Report')->create([
-            'patient_id'   => $patient->id,
-            'description' => '08032186996',
-            'statement'  => '12/24/2016',
-        ]);
-    }
-
     /**
      * Test that patient test form was visited
      */
@@ -163,10 +128,6 @@ class OperatorTest extends TestCase
         $this->actingAs($user)->visit('view/patients')
             ->see('All Patients');
     }
-
-
-
-
 
     /**
      * Test that report form was visited
