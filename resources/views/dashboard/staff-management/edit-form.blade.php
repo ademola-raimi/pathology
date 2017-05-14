@@ -14,9 +14,9 @@
                     <img src="{{ $staff->avatar }}" style="width: 20%; height: auto;">
                 </div>
 
-                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <label for="name">Role</label>
+                    <label for="role">Role</label>
                     <select class="form-control" name="role" id="role">
                         <option value="">Select user Role...</option>
                         <option value="1" <?php if ($staff->role_id === 1) { ?> selected <?php } ?>  >
@@ -29,6 +29,11 @@
                             Admin Staff
                         </option>
                     </select>
+                    @if ($errors->has('role'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('role') }}</strong>
+                    </span>
+                    @endif
                 </div>
 
                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -42,6 +47,7 @@
                     @endif
                 </div>
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" name="email" value="{{ $staff->email }}">
                     @if ($errors->has('email'))
