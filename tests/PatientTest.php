@@ -2,6 +2,7 @@
 
 use PHPMailer;
 use Illuminate\Http\Request;
+use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class PatientTest extends TestCase
@@ -104,5 +105,34 @@ class PatientTest extends TestCase
         $this->assertNotEmpty($decodedResponse);
         $this->assertEquals(count($decodedResponse), 1);
         $this->assertEquals($decodedResponse['0']->id, 1);
+    }
+
+    /**
+     * Make protected method createPdf accesible
+     */
+    protected static function getMethod($createPDF) {
+      $class = new ReflectionClass('App\Http\Controllers\PatientController');
+      $method = $class->getMethod($createPDF);
+      $method->setAccessible(true);
+
+      return $method;
+    }
+
+    /**
+     * test create pdf
+     */
+    public function testcreatePDF() {
+        $patient = factory(App\Patient::class, 1)->create();
+        $report  = factory(App\Report::class, 1)->create();
+        $user    = factory(App\User::class, 1)->create();
+
+        $createPDF    = self::getMethod('createPDF');
+        $this->mailer = new PHPMailer();
+
+        $obj = new App\Http\Controllers\PatientController($mailer);
+
+        $pdf = $createPDF->invokeArgs($obj, [$report->id]);
+
+        $this->assertObjectHasAttribute('snappy', $pdf);
     }
 }
