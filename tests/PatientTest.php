@@ -135,4 +135,17 @@ class PatientTest extends TestCase
 
         $this->assertObjectHasAttribute('snappy', $pdf);
     }
+
+    /**
+     * test view single report
+     */
+    public function testViewSingleReport()
+    {
+        $patient = $this->patient();
+        $report  = factory(App\Report::class, 1)->create();
+        $user    = factory(App\User::class, 1)->create();
+
+        $this->visit('patient/report/' . $patient->id)
+            ->see('Report Details');
+    }
 }
