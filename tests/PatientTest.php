@@ -129,7 +129,7 @@ class PatientTest extends TestCase
         $createPDF    = self::getMethod('createPDF');
         $this->mailer = new PHPMailer();
 
-        $obj = new App\Http\Controllers\PatientController($mailer);
+        $obj = new App\Http\Controllers\PatientController($this->mailer);
 
         $pdf = $createPDF->invokeArgs($obj, [$report->id]);
 
