@@ -1,5 +1,7 @@
 <?php
 
+use PHPMailer;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class PatientTest extends TestCase
@@ -32,6 +34,11 @@ class PatientTest extends TestCase
             ->seePageIs('patient/login');
     }
 
+    /**
+     * create a patient
+     *
+     * @return \Runner\Filter\Factory
+     */
     public function patient()
     {
         $patient = factory('App\Patient')->create([
@@ -46,6 +53,11 @@ class PatientTest extends TestCase
         return $patient;
     }
 
+    /**
+     * create a report
+     *
+     * @return \Runner\Filter\Factory
+     */
     public function report()
     {
         $report = factory('App\Report')->create([
@@ -73,23 +85,24 @@ class PatientTest extends TestCase
             ->see('Your report');
     }
 
-    public function testASingleReportView()
+    /**
+     * test autocomplete function
+     */
+    public function testAutocomplete()
     {
-        // Session::start();
+        $patient = factory(App\Patient::class, 1)->create();
 
-        // $patient = $this->patient();
+        $this->mailer = new PHPMailer();
+        $this->request = new Request(['term' => $patient->name]);
 
-        // $this->call('POST', 'patient/login', [
-        //     'patient_name' => $patient->name,
-        //     'patient_id'   => $patient->patient_id,
-        // ]);
+        $term = $this->request->request->all();
 
-        // $report = $this->report();
-        
+        $patientController = new App\Http\Controllers\PatientController($this->mailer);
+        $response = $patientController->autocomplete($this->request);
+        $decodedResponse = json_decode($response->getContent());
 
-        // $this->visit('patient/report')
-        //     ->click($report->description)
-        //     ->seePageIs('patient/report/'.$report->id)
-        //     ->see($report->name);
+        $this->assertNotEmpty($decodedResponse);
+        $this->assertEquals(count($decodedResponse), 1);
+        $this->assertEquals($decodedResponse['0']->id, 1);
     }
 }

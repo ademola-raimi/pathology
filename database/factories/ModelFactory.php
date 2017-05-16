@@ -25,8 +25,8 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Report::class, function (Faker\Generator $faker) {
     return [
-        'statement'   => $faker->name,
-        'description' => $faker->name,
+        'statement'   => $faker->text,
+        'description' => $faker->text,
         'user_id'     => 1,
         'patient_id'  => 1,
     ];
@@ -36,7 +36,7 @@ $factory->define(App\Patient::class, function (Faker\Generator $faker) {
     return [
         'email'         => $faker->email,
         'phone_number'  => $faker->phoneNumber,
-        'name'          => $faker->text,
+        'name'          => $faker->name,
         'user_id'       => 1,
         'date_of_birth' => 1,
         'patient_id'    => str_random(10),
