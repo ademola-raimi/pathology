@@ -43,10 +43,16 @@ class PatientController extends Controller
         return $this->patientReport($patient);
     }
 
+    /**
+     * Implement autocomplete
+     *
+     * @param  Request  $request
+     * @return view
+     */
     public function autocomplete(Request $request)
     {
         $term    = $request->term;
-        $results = array();
+        $results = [];
 
         $queries = Patient::where('name', 'LIKE', '%'.$term.'%')
             ->take(5)->get();

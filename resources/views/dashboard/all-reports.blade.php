@@ -18,8 +18,6 @@
                 </thead>
                 <tbody>
                 @foreach($reports as $report)
-
-                
                     <tr>
                         <td> Report number {{ $report->id }} </td>
                         <td>{{ $report->description}} </td>

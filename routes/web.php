@@ -27,7 +27,7 @@ Route::post('signup', [
 ]);
 
 Route::get('login', [
-	'uses' => 'Auth\AuthCOntroller@getLoginForm',
+	'uses' => 'Auth\AuthController@getLoginForm',
 	'as' => 'getLogin',
 ]);
 
@@ -101,6 +101,26 @@ Route::group(['middleware' => 'operator.user'], function () {
 	Route::post('patient/{id}/update', [
 		'uses' => 'OperatorUserController@updatePatient',
 		'as'   => 'updatePatient'
+	]);
+
+	Route::get('staffs', [
+		'uses' => 'StaffManagementController@viewStaffs',
+		'as' => 'getAllStaffs',
+	]);
+
+	Route::get('staff/{id}/edit', [
+		'uses' => 'StaffManagementController@editStaffForm',
+		'as' => 'editStaff',
+	]);
+
+	Route::post('staff/{id}/update', [
+		'uses' => 'StaffManagementController@updateStaff',
+		'as' => 'updateStaff',
+	]);
+
+	Route::get('staff/{id}/delete', [
+		'uses' => 'StaffManagementController@deleteStaff',
+		'as'   => 'deleteReport'
 	]);
 
 	Route::get('patient/{id}/delete', [

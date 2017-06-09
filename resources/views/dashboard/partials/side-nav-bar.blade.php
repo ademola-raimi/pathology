@@ -11,6 +11,10 @@
         <div class="panel-body" style="margin-top:; margin-left: 5%;">
             <a class="text-uppercase" href="{{ route('getReportForm') }}">Report Form</a>
         </div>
+
+        <div class="panel-body" style="margin-top:; margin-left: 5%;">
+            <a class="text-uppercase" href="{{ route('getAllStaffs') }}">Manage Staffs</a>
+        </div>
         @endcan
         <div class="panel-body" style="margin-top:; margin-left: 5%;">
             <a class="text-uppercase" href="{{ route('getPatients') }}">View Patients</a>

@@ -66,6 +66,5 @@ class UserSignUpTest extends TestCase
             ->type('demola@gmail.com', 'email')
             ->press('Register')
             ->see('The email has already been taken.');
-        
     }
 }
